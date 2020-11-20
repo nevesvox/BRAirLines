@@ -1,0 +1,419 @@
+{$A8,B-,C+,D+,E-,F-,G+,H+,I+,J-,K-,L+,M-,N-,O+,P+,Q-,R-,S-,T-,U-,V+,W-,X+,Y+,Z1}
+{$MINSTACKSIZE $00004000}
+{$MAXSTACKSIZE $00100000}
+{$IMAGEBASE $00400000}
+{$APPTYPE GUI}
+{$WARN SYMBOL_DEPRECATED ON}
+{$WARN SYMBOL_LIBRARY ON}
+{$WARN SYMBOL_PLATFORM ON}
+{$WARN SYMBOL_EXPERIMENTAL ON}
+{$WARN UNIT_LIBRARY ON}
+{$WARN UNIT_PLATFORM ON}
+{$WARN UNIT_DEPRECATED ON}
+{$WARN UNIT_EXPERIMENTAL ON}
+{$WARN HRESULT_COMPAT ON}
+{$WARN HIDING_MEMBER ON}
+{$WARN HIDDEN_VIRTUAL ON}
+{$WARN GARBAGE ON}
+{$WARN BOUNDS_ERROR ON}
+{$WARN ZERO_NIL_COMPAT ON}
+{$WARN STRING_CONST_TRUNCED ON}
+{$WARN FOR_LOOP_VAR_VARPAR ON}
+{$WARN TYPED_CONST_VARPAR ON}
+{$WARN ASG_TO_TYPED_CONST ON}
+{$WARN CASE_LABEL_RANGE ON}
+{$WARN FOR_VARIABLE ON}
+{$WARN CONSTRUCTING_ABSTRACT ON}
+{$WARN COMPARISON_FALSE ON}
+{$WARN COMPARISON_TRUE ON}
+{$WARN COMPARING_SIGNED_UNSIGNED ON}
+{$WARN COMBINING_SIGNED_UNSIGNED ON}
+{$WARN UNSUPPORTED_CONSTRUCT ON}
+{$WARN FILE_OPEN ON}
+{$WARN FILE_OPEN_UNITSRC ON}
+{$WARN BAD_GLOBAL_SYMBOL ON}
+{$WARN DUPLICATE_CTOR_DTOR ON}
+{$WARN INVALID_DIRECTIVE ON}
+{$WARN PACKAGE_NO_LINK ON}
+{$WARN PACKAGED_THREADVAR ON}
+{$WARN IMPLICIT_IMPORT ON}
+{$WARN HPPEMIT_IGNORED ON}
+{$WARN NO_RETVAL ON}
+{$WARN USE_BEFORE_DEF ON}
+{$WARN FOR_LOOP_VAR_UNDEF ON}
+{$WARN UNIT_NAME_MISMATCH ON}
+{$WARN NO_CFG_FILE_FOUND ON}
+{$WARN IMPLICIT_VARIANTS ON}
+{$WARN UNICODE_TO_LOCALE ON}
+{$WARN LOCALE_TO_UNICODE ON}
+{$WARN IMAGEBASE_MULTIPLE ON}
+{$WARN SUSPICIOUS_TYPECAST ON}
+{$WARN PRIVATE_PROPACCESSOR ON}
+{$WARN UNSAFE_TYPE OFF}
+{$WARN UNSAFE_CODE OFF}
+{$WARN UNSAFE_CAST OFF}
+{$WARN OPTION_TRUNCATED ON}
+{$WARN WIDECHAR_REDUCED ON}
+{$WARN DUPLICATES_IGNORED ON}
+{$WARN UNIT_INIT_SEQ ON}
+{$WARN LOCAL_PINVOKE ON}
+{$WARN MESSAGE_DIRECTIVE ON}
+{$WARN TYPEINFO_IMPLICITLY_ADDED ON}
+{$WARN RLINK_WARNING ON}
+{$WARN IMPLICIT_STRING_CAST ON}
+{$WARN IMPLICIT_STRING_CAST_LOSS ON}
+{$WARN EXPLICIT_STRING_CAST OFF}
+{$WARN EXPLICIT_STRING_CAST_LOSS OFF}
+{$WARN CVT_WCHAR_TO_ACHAR ON}
+{$WARN CVT_NARROWING_STRING_LOST ON}
+{$WARN CVT_ACHAR_TO_WCHAR ON}
+{$WARN CVT_WIDENING_STRING_LOST ON}
+{$WARN NON_PORTABLE_TYPECAST ON}
+{$WARN XML_WHITESPACE_NOT_ALLOWED ON}
+{$WARN XML_UNKNOWN_ENTITY ON}
+{$WARN XML_INVALID_NAME_START ON}
+{$WARN XML_INVALID_NAME ON}
+{$WARN XML_EXPECTED_CHARACTER ON}
+{$WARN XML_CREF_NO_RESOLVE ON}
+{$WARN XML_NO_PARM ON}
+{$WARN XML_NO_MATCHING_PARM ON}
+{$WARN IMMUTABLE_STRINGS OFF}
+ unit Unit5;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.DBCtrls,
+  Vcl.Imaging.pngimage, Vcl.ExtCtrls, Data.DB, Vcl.Buttons, frxClass, frxDBSet, frxBarcode, DateUtils;
+
+type
+  TForm5 = class(TForm)
+    dtPickerDataPartida: TDateTimePicker;
+    dtPickerDataRetorno: TDateTimePicker;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    comboBoxOrigem: TDBLookupComboBox;
+    GroupBox1: TGroupBox;
+    Image1: TImage;
+    Image2: TImage;
+    edtAeroportoOrigem: TEdit;
+    listaCidadesOrigem: TDataSource;
+    Label5: TLabel;
+    Label6: TLabel;
+    edtCidadeOrigem: TEdit;
+    Label7: TLabel;
+    edtPaisOrigem: TEdit;
+    Label8: TLabel;
+    edtElevacaoOrigem: TEdit;
+    edtLongitudeOrigem: TEdit;
+    edtLatitudeOrigem: TEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    GroupBox2: TGroupBox;
+    Label4: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    comboBoxDestino: TDBLookupComboBox;
+    edtAeroportoDestino: TEdit;
+    edtCidadeDestino: TEdit;
+    edtPaisDestino: TEdit;
+    edtElevacaoDestino: TEdit;
+    edtLongitudeDestino: TEdit;
+    edtLatitudeDestino: TEdit;
+    listaCidadesDestino: TDataSource;
+    GroupBox3: TGroupBox;
+    GroupBox4: TGroupBox;
+    comboBoxAeronave: TDBLookupComboBox;
+    Label17: TLabel;
+    Panel1: TPanel;
+    lblDistanciaTotal: TLabel;
+    Label18: TLabel;
+    Image3: TImage;
+    Image4: TImage;
+    listaAvioesAtivos: TDataSource;
+    edtQtdePassageiros: TEdit;
+    Label19: TLabel;
+    Image5: TImage;
+    Label20: TLabel;
+    edtValorPorQuilometro: TEdit;
+    Panel2: TPanel;
+    Image6: TImage;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    GroupBox5: TGroupBox;
+    Label21: TLabel;
+    comboBoxFuncionarios: TComboBox;
+    checkFuncionarios: TCheckBox;
+    frxDBDataset1: TfrxDBDataset;
+    Label22: TLabel;
+    frxReport1: TfrxReport;
+    Image7: TImage;
+    procedure listaCidadesOrigemDataChange(Sender: TObject; Field: TField);
+    procedure FormShow(Sender: TObject);
+    procedure calculaDistancia(Sender: TObject);
+    procedure listaCidadesDestinoDataChange(Sender: TObject; Field: TField);
+    procedure listaAvioesAtivosDataChange(Sender: TObject; Field: TField);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure checkFuncionariosClick(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure dtPickerDataRetornoExit(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit3, Unit4, Unit6, Unit1;
+
+function sgn(a: real): real;
+begin
+  if a < 0 then sgn := -1 else sgn := 1;
+end;
+
+function atan2(y, x: real): real;
+begin
+  if x > 0  then atan2 := arctan(y/x)
+  else if x < 0  then atan2 := arctan(y/x) + pi
+  else atan2 := pi/2 * sgn(y);
+end;
+
+procedure TForm5.BitBtn1Click(Sender: TObject);
+var valor_total, distancia_viagem, valor_km, valor_passageiros : double;
+var qtde_passageiros : integer;
+begin
+  // Verifica campos obrigatórios
+  if edtAeroportoOrigem.Text = '' then
+  begin
+    ShowMessage('Escolha uma Cidade de Origem!');
+    comboBoxOrigem.SetFocus;
+    exit;
+  end;
+   if edtAeroportoDestino.Text = '' then
+  begin
+    ShowMessage('Escolha uma Cidade de Destino!');
+    comboBoxDestino.SetFocus;
+    exit;
+  end;
+    if edtQtdePassageiros.Text = '' then
+  begin
+    ShowMessage('Escolha uma Aeronave!');
+    comboBoxAeronave.SetFocus;
+    exit;
+  end;
+
+  dtmPrincipal.qrySalvaNovoVoo.Active := false;
+
+  // Prepara os dados para a inclusão no DB
+  dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_Aeronave').AsInteger := dtmPrincipal.qryBuscaAvioesAtivosID.AsInteger;
+  dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_Distancia').AsFloat :=  StrToFloat(StringReplace(lblDistanciaTotal.Caption, '.', ',', [rfReplaceAll]));
+  dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_Origem').AsInteger := dtmPrincipal.qryBuscaCidadesOrigemID.AsInteger;
+  dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_Destino').AsInteger := dtmPrincipal.qryBuscaCidadesDestinoID.AsInteger;
+
+  // Verifica se terá comissários
+  if not checkFuncionarios.Checked then
+  begin
+    dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_Comissarios').AsInteger := StrToInt(comboBoxFuncionarios.Text);
+  end
+  else
+  begin
+    dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_Comissarios').AsInteger := 0;
+  end;
+
+  // Recupera os dados para o calculo do valor Total
+  distancia_viagem := StrToFloat(StringReplace(lblDistanciaTotal.Caption, '.', ',', [rfReplaceAll]));
+  qtde_passageiros := StrToInt(edtQtdePassageiros.Text);
+  valor_km := StrToFloat(edtValorPorQuilometro.Text);
+
+  // Calculo
+  valor_passageiros := qtde_passageiros * valor_km;
+  valor_total := valor_passageiros * distancia_viagem;
+
+  dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_ValorTotal').AsFloat := valor_total;
+  dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_DataPartida').AsDate := dtPickerDataPartida.date;
+
+  // Verifica se a data de Retorno foi preenchida
+  dtmPrincipal.qrySalvaNovoVoo.DataSet.ParamByName('par_DataRetorno').AsDate := dtPickerDataRetorno.date;
+
+
+  // Executa a Sql
+  dtmPrincipal.qrySalvaNovoVoo.Execute;
+
+  // Busca os dados do Voo
+  dtmPrincipal.qryBuscaDadosVoo.Active := false;
+  dtmPrincipal.qryBuscaDadosVoo.Active := true;
+
+  // Executa a Sql
+  dtmPrincipal.qryBuscaDadosVoo.Execute;
+
+  // Prepara o relatório
+  frxReport1.PrepareReport();
+  frxReport1.ShowPreparedReport;
+
+  // Atualiza a tela principal
+  Form1.AtualizaTela(Sender);
+
+  Form6.ShowModal;
+
+end;
+
+procedure TForm5.BitBtn2Click(Sender: TObject);
+begin
+  Self.Close;
+end;
+
+procedure TForm5.calculaDistancia(Sender: TObject);
+var Long1, Lat1, Long2, Lat2, Val1, Val2, Long, Lat: Double;
+begin
+  //Raio da terra
+  Val1 := 6371.0;
+
+  // Recupera as cordenadas
+  Long1 := StrToFloat(Copy(edtLongitudeOrigem.Text,1,7));
+  Lat1  := StrToFloat(copy(edtLatitudeOrigem.Text,1,7));
+
+  Long2 := StrToFloat(copy(edtLongitudeDestino.Text,1,7));
+  Lat2  := StrToFloat(copy(edtLatitudeDestino.Text,1,7));
+
+  Lat1  := Lat1 * pi / 180.0;
+  Long1 := Long1 * pi / 180.0;
+  Lat2  := Lat2 * pi / 180.0;
+  Long2 := Long2 * pi / 180.0;
+
+  Lat := Lat2 - Lat1;
+  Long := Long2 - Long1;
+
+  Val2 := sin(Lat / 2) * sin(Lat / 2) + cos(Lat1) * cos(Lat2) * sin(Long / 2) * sin(Long / 2);
+  Val2 := 2 * Atan2(sqrt(Val2), sqrt(1 - Val2));
+
+  lblDistanciaTotal.Caption := copy(FloatToStr(Val1 * Val2),1,7);
+end;
+
+procedure TForm5.checkFuncionariosClick(Sender: TObject);
+begin
+   if checkFuncionarios.Checked = true then
+  begin
+    comboBoxFuncionarios.Enabled := false;
+  end
+  else
+  begin
+    comboBoxFuncionarios.Enabled := true;
+  end;
+end;
+
+procedure TForm5.dtPickerDataRetornoExit(Sender: TObject);
+begin
+  if dtPickerDataRetorno.Date < dtPickerDataPartida.Date then
+  begin
+    ShowMessage('Atenção! A Data de Retorno não pode ser menor que a Data de Partida. Altere para continuar!');
+    dtPickerDataRetorno.SetFocus;
+  end;
+
+end;
+
+procedure TForm5.FormShow(Sender: TObject);
+begin
+  // Limpas os campos
+  edtAeroportoOrigem.Clear;
+  edtCidadeOrigem.Clear;
+  edtPaisOrigem.Clear;
+  edtElevacaoOrigem.Clear;
+  edtLongitudeOrigem.Clear;
+  edtLatitudeOrigem.Clear;
+  comboBoxOrigem.KeyValue := 0;
+
+  edtAeroportoDestino.Clear;
+  edtCidadeDestino.Clear;
+  edtPaisDestino.Clear;
+  edtElevacaoDestino.Clear;
+  edtLongitudeDestino.Clear;
+  edtLatitudeDestino.Clear;
+  comboBoxDestino.KeyValue := 0;
+
+  lblDistanciaTotal.Caption := '0';
+
+  // Atualiza o Grid
+  dtmPrincipal.qryBuscaAvioesAtivos.Active := false;
+  dtmPrincipal.qryBuscaAvioesAtivos.Active := true;
+
+  edtValorPorQuilometro.Clear;
+  edtQtdePassageiros.Clear;
+  comboBoxAeronave.KeyValue := 0;
+  comboBoxFuncionarios.ItemIndex := 0;
+
+  // Limpa a imagem
+  Image6.Picture := nil;
+
+  // Atualiza para a data Atual
+  dtPickerDataPartida.MinDate := date;
+  dtPickerDataRetorno.MinDate := date;
+
+end;
+
+procedure TForm5.listaAvioesAtivosDataChange(Sender: TObject; Field: TField);
+begin
+  edtQtdePassageiros.Text := dtmPrincipal.qryBuscaAvioesAtivosQTDE_PASSAGEIROS.AsString;
+  edtValorPorQuilometro.Text := dtmPrincipal.qryBuscaAvioesAtivosVALOR_KM.AsString;
+
+  // Verifica se possui imagem
+  if dtmPrincipal.qryBuscaAvioesAtivosIMAGEM.AsString <> '' then
+  begin
+    TBlobField(dtmPrincipal.qryBuscaAvioesAtivosIMAGEM).SaveToFile('C:\BRAIRLINES\PICTURE.JPG');
+    Image6.Picture.LoadFromFile('C:\BRAIRLINES\PICTURE.JPG');
+  end
+  else
+  begin
+    // Limpa a imagem
+    Image6.Picture := nil;
+  end;
+
+end;
+
+procedure TForm5.listaCidadesDestinoDataChange(Sender: TObject; Field: TField);
+begin
+  // Atualiza os campos com os dados do Aeroporto de Destino
+  edtAeroportoDestino.Text := dtmPrincipal.qryBuscaCidadesDestinoNOME.AsString;
+  edtCidadeDestino.Text    := dtmPrincipal.qryBuscaCidadesDestinoCIDADE.AsString;
+  edtPaisDestino.Text      := dtmPrincipal.qryBuscaCidadesDestinoPAIS.AsString;
+  edtElevacaoDestino.Text  := dtmPrincipal.qryBuscaCidadesDestinoELEVACAO.AsString;
+  edtLongitudeDestino.Text := StringReplace(dtmPrincipal.qryBuscaCidadesDestinoLON.AsString, '.', ',', [rfReplaceAll]);
+  edtLatitudeDestino.Text  := StringReplace(dtmPrincipal.qryBuscaCidadesDestinoLAT.AsString, '.', ',', [rfReplaceAll]);
+
+  if (edtLongitudeOrigem.Text <> '') and (edtLongitudeDestino.Text <> '') then
+  begin
+    calculaDistancia(Sender);
+  end;
+
+end;
+
+procedure TForm5.listaCidadesOrigemDataChange(Sender: TObject; Field: TField);
+begin
+  // Atualiza os campos com os dados do Aeroporto de Origem
+  edtAeroportoOrigem.Text := dtmPrincipal.qryBuscaCidadesOrigemNOME.AsString;
+  edtCidadeOrigem.Text    := dtmPrincipal.qryBuscaCidadesOrigemCIDADE.AsString;
+  edtPaisOrigem.Text      := dtmPrincipal.qryBuscaCidadesOrigemPAIS.AsString;
+  edtElevacaoOrigem.Text  := dtmPrincipal.qryBuscaCidadesOrigemELEVACAO.AsString;
+  edtLongitudeOrigem.Text := StringReplace(dtmPrincipal.qryBuscaCidadesOrigemLON.AsString, '.', ',', [rfReplaceAll]);
+  edtLatitudeOrigem.Text  := StringReplace(dtmPrincipal.qryBuscaCidadesOrigemLAT.AsString, '.', ',', [rfReplaceAll]);
+
+  if (edtLongitudeOrigem.Text <> '') and (edtLongitudeDestino.Text <> '') then
+  begin
+    calculaDistancia(Sender);
+  end;
+
+end;
+
+end.
